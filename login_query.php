@@ -1,27 +1,27 @@
 <?php
-	require_once 'admin/dbcon.php';
+	require_once 'dbcon.php';
 	
-	if(isset($_POST['login'])){
-		$idno=$_POST['idno'];
+	if(isset($_POST['login']))
+	{
+		$username=$_POST['username'];
 		$password=$_POST['password'];
 	
-		$result = $conn->query("SELECT * FROM voters WHERE id_number = '$idno' && password = '$password' && `account` = 'active' && `status` = 'Unvoted'") or die(mysqli_errno());
-		$row = $result->fetch_array();
-		$voted = $conn->query("SELECT * FROM `voters` WHERE id_number = '$idno' && password = '$password' && `status` = 'Voted'")->num_rows;
-		$numberOfRows = $result->num_rows;				
 		
-		
-		if ($numberOfRows > 0){
-			session_start();
-			$_SESSION['voters_id'] = $row['voters_id'];
-			header('location:vote.php');
-		}
-		
-		if($voted == 1){
-			echo " <br><center><font color= 'red' size='3'>You Can Only Vote Once</center></font>";
-		}else{
-			echo " <br><center><font color= 'red' size='3'>LOGIN ERROR!</center></font>";
-		}
+		$query = $conn->query("SELECT * FROM user WHERE username = 	'$username' AND password = '$password'") or die(mysql_error());
+		$rows = $query->num_rows;
+		$fetch = $query->fetch_array();
+																		
+			if ($rows == 0) 
+					{
+						echo " <br><center><font color= 'red' size='3'>Please fill up the fields correctly</center></font>";
+					} 
+				else if ($rows > 0)
+					{
+					session_start();
+					$_SESSION['id'] = $fetch['user_id'];
+					header("location:candidate.php");
+				
+			}	
 	
 	}
-?>
+	?>

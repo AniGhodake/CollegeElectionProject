@@ -1,12 +1,10 @@
 🗳️ Online College Election System
-Welcome to the Online College Election System — a simple web-based platform for managing and conducting student elections securely and efficiently.
+Welcome to the Online College Election System 
+— a simple web-based platform for managing and conducting student elections securely and efficiently.
 
 🔐 Admin Login
 Use the following default credentials to access the Admin Panel:
 
-pgsql
-Copy
-Edit
 Username: admin  
 Password: admin
 From the admin panel, you can:
@@ -30,10 +28,6 @@ Use them on the Voter Login page to cast your vote.
 ⚠️ The project won’t run unless the database is set up properly.
 
 Create a MySQL database named:
-
-nginx
-Copy
-Edit
 voting
 Import the SQL file located in the database/ folder into your voting database.
 
